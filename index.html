@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>todo app</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
     <div class="page">
         <header>
-            <h1>Todo app</h1>
+            <h1>Todo App</h1>
         </header>
         <main>
-            <div id="todos-container"></div>
+            <div>
+                <button class="sort-btn" onclick="orderByTitle()">Ordina per titolo</button>
+                <button class="sort-btn" onclick="orderByCreationDate()">Ordina per data di creazione</button>
+            </div>
+            <div id="todos-container">
+
+            </div>
         </main>
     </div>
 </body>

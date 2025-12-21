@@ -1,8 +1,6 @@
 *{
     box-sizing: border-box;
-    background-color: black;
-    color: white;
-    /* border: solid 1px crimson; */
+    /* border: 1px solid greenyellow; */
 }
 
 html, body{
@@ -12,7 +10,7 @@ html, body{
 
 body{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,26 +24,40 @@ body{
 header{
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
 }
 
 .back-link{
-    background-color: #82c5c5;
-    border: 1px solid white;
-    border-radius: 50px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50%;
     font-size: x-large;
-    width: 25px;
-    height: 25px;
-    color: #523939;
+    min-width: 30px;
+    min-height: 30px;
     text-decoration: none;
-    line-height: 25px;
+    color: black;
+    line-height: 30px;
     text-align: center;
+    display: inline-block;
 }
 
 .back-link:hover{
-    background-color: white;
+    background-color: black;
+    color: white;
 }
 
-/* .page h1{
-    text-align: center;
-} */
+.detail-info{
+    font-size: x-large;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.colored-dot{
+    min-height: 30px;
+    min-width: 30px;
+    border-radius: 50%;
+}
