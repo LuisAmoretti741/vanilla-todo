@@ -1,5 +1,7 @@
 *{
     box-sizing: border-box;
+    background-color: black;
+    color: white;
     /* border: 1px solid greenyellow; */
 }
 
@@ -19,6 +21,10 @@ body{
 .page{
     max-width: 800px;
     padding: 16px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .page header{
@@ -50,7 +56,7 @@ body{
     color: white;
 } */
 
-.detail-link{
+.action{
     background-color: white;
     border: 1px solid black;
     border-radius: 50%;
@@ -64,7 +70,7 @@ body{
     display: inline-block;
 }
 
-.detail-link:hover{
+.action:hover{
     background-color: black;
     color: white;
 }
@@ -73,6 +79,7 @@ body{
     padding: 8px;
     border-radius: 30px;
     background-color: white;
+    color: black;
 }
 
 .colored-dot{
@@ -85,4 +92,9 @@ body{
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.action-container {
+    display: flex;
+    justify-content: flex-end;
 }

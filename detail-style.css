@@ -1,5 +1,7 @@
 *{
     box-sizing: border-box;
+    background-color: black;
+    color: white;
     /* border: 1px solid greenyellow; */
 }
 
@@ -44,6 +46,13 @@ header{
 .back-link:hover{
     background-color: black;
     color: white;
+}
+
+.delete-btn {
+    background-color: white;
+    color: black;
+    width: 100px;
+    border-radius: 10px;
 }
 
 .detail-info{
