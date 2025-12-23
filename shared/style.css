@@ -1,5 +1,7 @@
 *{
     box-sizing: border-box;
+    background-color: black;
+    color: white;
     /* border: 1px solid greenyellow; */
 }
 
@@ -45,6 +47,7 @@ body{
 }
 
 .text-btn{
+    color: black;
     padding: 8px;
     border-radius: 30px;
     background-color: white;
