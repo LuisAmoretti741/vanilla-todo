@@ -5,28 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>todo app</title>
-    <link rel="stylesheet" href="./style.css">
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <link rel="stylesheet" href="./home-style.css">
 </head>
 
 <body>
     <div class="page">
-        <header>
-            <h1>Todo App</h1>
-        </header>
-        <main>
-            <div>
-                <button class="sort-btn" onclick="orderByTitle()">Ordina per titolo</button>
-                <button class="sort-btn" onclick="orderByCreationDate()">Ordina per data di creazione</button>
-            </div>
-            <div id="todos-container">
-
-            </div>
-        </main>
-        <div class="action-container">
-            <a class="action" href="./new.html">+</a>
+        <div>
+            <header>
+                <h1>Todo App</h1>
+            </header>
+            <main>
+                <div>
+                    <!-- <button class="text-btn" onclick="orderByTitle()">Ordina per titolo</button>
+                    <button class="text-btn" onclick="orderByCreationDate()">Ordina per data di creazione</button> -->
+                    <button class="text-btn" id="sort-title-btn">Ordina per titolo</button>
+                    <button class="text-btn" id="sort-creation-btn">Ordina per data di creazione</button>
+                </div>
+                <div id="todos-container">
+        
+                </div>
+            </main>
+        </div>
+        <div class="actions-container">
+            <a class="action" href="./new/new.html">+</a>
         </div>
     </div>
 </body>
-<script src="./todo-service.js"></script>
-<script src="./script.js"></script>
+<!-- <script src="./shared/todo-service.js"></script> -->
+<script type="module" src="./script.js"></script>
 </html>

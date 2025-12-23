@@ -1,3 +1,5 @@
+import {getAllTodos, changeDoneStatus} from "./shared/todo-service.js"
+
 function displayTodos(todos){
 
     const todosContainer = document.getElementById('todos-container');
@@ -41,18 +43,21 @@ function displayTodos(todos){
         } else {
             completeActionIcon = "✓"
         }
-        
         const completeBtn = document.createElement('button');
         completeBtn.appendChild(document.createTextNode(completeActionIcon));
-        completeBtn.classList.add('action');
+        completeBtn.classList.add("action");
 
         completeBtn.addEventListener('click', () => {
             changeDoneStatus(todo.id, !todo.done)
             .then(_ => {
-                getAllTodos().then(result => {
-                    todos = result;
-                    displayTodos(todos)
-                })
+
+                todo.done = !todo.done;
+                displayTodos(todos);
+
+                // getAllTodos().then(results => {
+                //     todos = results;
+                //     displayTodos(todos)
+                // })          
             })
         })
 
@@ -61,10 +66,12 @@ function displayTodos(todos){
         const detailLink = document.createElement('a');
         detailLink.appendChild(document.createTextNode("🠊"));
         detailLink.classList.add("action");
-        detailLink.href = './detail.html?todoId=' + todo.id;
+        detailLink.href = './detail/detail.html?todoId=' + todo.id;
 
         actionsDiv.appendChild(detailLink);
+
         card.appendChild(actionsDiv);
+
         todosContainer.appendChild(card);
 
     }
@@ -98,6 +105,12 @@ function orderByCreationDate(){
     todos.sort(compareDates);
     displayTodos(todos);
 }
+
+document.getElementById("sort-title-btn")
+.addEventListener('click', orderByTitle);
+
+document.getElementById("sort-creation-btn")
+.addEventListener('click', orderByCreationDate);
 
 
 // due tasti nella home (lista di todo)
