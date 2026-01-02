@@ -19,15 +19,13 @@ body{
 .page{
     max-width: 800px;
     padding: 16px;
-}
-
-header{
+    height: 100vh;
     display: flex;
-    align-items: center;
-    gap: 4px;
+    flex-direction: column;
 }
 
-.back-link{
+
+.action{
     background-color: white;
     border: 1px solid black;
     border-radius: 50%;
@@ -41,23 +39,25 @@ header{
     display: inline-block;
 }
 
-.back-link:hover{
+.action:hover{
     background-color: black;
     color: white;
 }
 
-.detail-info{
-    font-size: x-large;
-}
-
-main{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.text-btn{
+    padding: 8px;
+    border-radius: 30px;
+    background-color: white;
 }
 
 .colored-dot{
     min-height: 30px;
     min-width: 30px;
     border-radius: 50%;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }

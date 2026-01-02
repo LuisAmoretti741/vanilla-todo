@@ -1,3 +1,5 @@
+import {getTodo, deleteTodo, changeDoneStatus} from "../shared/todo-service.js"
+
 function displayTodo(todo) {
     const titleHeader = document.getElementById('todo-title');
     titleHeader.innerHTML = todo.title;
@@ -9,7 +11,11 @@ function displayTodo(todo) {
     creationDateSpan.innerHTML = formaDate(todo.creationDate);
 
     const endDateSpan = document.getElementById('todo-end-date');
-    endDateSpan.innerHTML = formaDate(todo.endDate);
+    if (todo.endDate === "") {
+        endDateSpan.innerHTML = "nessuna";
+    } else {
+        endDateSpan.innerHTML = formaDate(todo.endDate);
+    }
 
     const colorDiv = document.getElementById('todo-color');
     colorDiv.style.backgroundColor = todo.color;
@@ -19,6 +25,13 @@ function displayTodo(todo) {
         doneSpan.innerHTML = 'completato';
     } else {
         doneSpan.innerHTML = 'da completare'
+    }
+
+    const statusBtn = document.getElementById("status-btn");
+    if (todo.done) {
+        statusBtn.innerHTML = "riattiva";
+    } else {
+        statusBtn.innerHTML = "completa";
     }
 
 }
@@ -39,8 +52,36 @@ function formaDate(dateISO) {
     return date.toLocaleDateString("it-IT", options);
 }
 
+function deleteTodoAndRedirect() {
+
+    if (confirm("Vuoi veramente cancellare il todo???")) {
+        deleteTodo(selectedTodo.id).then(_ => {
+            window.location.assign('../')
+        });  
+    }
+}
+
+function changeStatus() {
+    changeDoneStatus(selectedTodo.id, !selectedTodo.done)
+    .then(_ => {
+        selectedTodo.done = !selectedTodo.done;
+        displayTodo(selectedTodo);
+    })
+}
+
+document.getElementById("status-btn")
+.addEventListener("click", changeStatus);
+
+document.getElementById("delete-btn")
+.addEventListener("click", deleteTodoAndRedirect)
+
 const searchParams = new URLSearchParams(window.location.search);
 
 const id = searchParams.get('todoId');
 
-getTodo(id).then(result => displayTodo(result));
+let selectedTodo;
+
+getTodo(id).then(result => {
+    selectedTodo = result;
+    displayTodo(selectedTodo)
+});

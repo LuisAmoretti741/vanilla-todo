@@ -1,3 +1,5 @@
+import {getAllTodos, changeDoneStatus} from "./shared/todo-service.js"
+
 function displayTodos(todos){
 
     const todosContainer = document.getElementById('todos-container');
@@ -25,35 +27,44 @@ function displayTodos(todos){
 
         card.appendChild(colorAndTitleDiv);
 
-        // const detailBtn = document.createElement('button');
-        // detailBtn.appendChild(document.createTextNode("🠊"));
-        // detailBtn.classList.add("detail-btn");
-        // detailBtn.addEventListener('click', () => {
-        //     window.location.assign('./detail.html?todoId=' + todo.id)
-        // })
 
-        // card.appendChild(detailBtn);
+        const actionsDiv = document.createElement('div');
+        let completeActionIcon;
+        if (todo.done) {
+            completeActionIcon = "↺"
+        } else {
+            completeActionIcon = "✓"
+        }
+        const completeBtn = document.createElement('button');
+        completeBtn.appendChild(document.createTextNode(completeActionIcon));
+        completeBtn.classList.add("action");
+
+        completeBtn.addEventListener('click', () => {
+            changeDoneStatus(todo.id, !todo.done)
+            .then(_ => {
+
+                todo.done = !todo.done;
+                displayTodos(todos);
+ 
+            })
+        })
+
+        actionsDiv.appendChild(completeBtn);
 
         const detailLink = document.createElement('a');
         detailLink.appendChild(document.createTextNode("🠊"));
-        detailLink.classList.add("detail-link");
-        detailLink.href = './detail.html?todoId=' + todo.id;
+        detailLink.classList.add("action");
+        detailLink.href = './detail/detail.html?todoId=' + todo.id;
 
-        card.appendChild(detailLink);
+        actionsDiv.appendChild(detailLink);
+
+        card.appendChild(actionsDiv);
 
         todosContainer.appendChild(card);
 
     }
 
 }
-
-let todos = []
-
-getAllTodos().then(results => {
-    todos = results;
-    displayTodos(todos)
-})
-
 
 function orderByTitle() {
     todos.sort((t1, t2) => t1.title.localeCompare(t2.title));
@@ -74,6 +85,19 @@ function orderByCreationDate(){
     todos.sort(compareDates);
     displayTodos(todos);
 }
+
+document.getElementById("sort-title-btn")
+.addEventListener('click', orderByTitle);
+
+document.getElementById("sort-creation-btn")
+.addEventListener('click', orderByCreationDate);
+
+let todos = []
+
+getAllTodos().then(results => {
+    todos = results;
+    displayTodos(todos)
+})
 
 
 // due tasti nella home (lista di todo)
