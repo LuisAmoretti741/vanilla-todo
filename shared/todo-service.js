@@ -1,5 +1,5 @@
 
-const baseUrl = "https://69411c19686bc3ca8165a7da.mockapi.io/api/v1/todos";
+const baseUrl = "https://6942665069b12460f310f9c1.mockapi.io/api/v1/todos";
 
 
 export function getAllTodos() {
